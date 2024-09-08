@@ -1,0 +1,37 @@
+#include<iostream>
+#include<cstdlib>
+using namespace std;
+struct Node{
+    int data;
+    struct Node *next;
+};
+
+void display(struct Node *p){
+    while(p!=NULL){
+    cout<<p->data<<endl;
+    p=p->next;
+    }
+}
+int main(){
+    struct Node *head;
+    struct Node *second;
+    struct Node *third;
+    struct Node *fourth;
+    head=(struct Node*)malloc(sizeof(int));
+    second=(struct Node*)malloc(sizeof(int));
+    third=(struct Node*)malloc(sizeof(int));
+    fourth=(struct Node*)malloc(sizeof(int));
+    head->data=7;
+    head->next=second;
+
+    second->data=8;
+    second->next=third;
+
+    third->data=9;
+    third->next=fourth;
+
+    fourth->data=69;
+    fourth->next=NULL;
+    display(head);
+    return 0;
+}
