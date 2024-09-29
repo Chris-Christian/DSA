@@ -1,0 +1,91 @@
+#include <iostream>
+using namespace std;
+int stack[100],n=100,top=-1;
+void push(int val){
+    if(top>=n-1){
+        cout<<"Stack Overflow";
+    }else{
+        top=top+1;
+        stack[top]=val;
+    }
+}
+void pop(){
+    if(top<=-1){
+        cout<<"Stack Underflow";
+    }else{
+        top--;
+    }
+}
+void display(){
+    if(top>=0){
+        for(int i=top;i>=0;i--){
+            cout<<stack[i]<<endl;
+        }
+    }
+}
+void peep(int index){
+    if(index>top){
+        cout<<"This index is empty"<<endl;
+    }else{
+        cout<<"Element on index "<<index<<" is "<<stack[index]<<endl;
+    }
+}
+void update(int index,int val){
+    if(index>top){
+        cout<<"This index is empty"<<endl;
+    }else{
+        stack[index]=val;
+        cout<<"Inserted"<<endl;
+    }
+}
+int main(){
+    int ch,val,index;
+    cout<<"1) Push in stack"<<endl;
+    cout<<"2) Pop from stack"<<endl;
+    cout<<"3) Display stack"<<endl;
+    cout<<"4) Peep any element"<<endl;
+    cout<<"5) Update any value"<<endl;
+    cout<<"6) Exit"<<endl;
+    do{
+        cout<<"Enter your choice"<<endl;
+        cin>>ch;
+        switch(ch){
+            case 1:{
+                cout<<"Enter Value to push"<<endl;
+                cin>>val;
+                push(val);
+                break;
+            }
+            case 2:{
+                pop();
+                break;
+            }
+            case 3:{
+                display();
+                break;
+            }
+            case 4:{
+                cout<<"Enter any index"<<endl;
+                cin>>index;
+                peep(index);
+                break;
+            }
+            case 5:{
+                cout<<"Enter index"<<endl;
+                cin>>index;
+                cout<<"Enter value"<<endl;
+                cin>>val;
+                update(index,val);
+                break;
+            }
+            case 6:{
+                cout<<"Exit"<<endl;
+                break;
+            }
+            default:{
+                cout<<"Invalid";
+            }
+        }
+    }while(ch!=6);
+    return 0;
+}
